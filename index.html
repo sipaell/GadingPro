@@ -2,8 +2,8 @@
 <html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paramount Luxe | Premium Living Experience</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Jual Beli & Sewa Rumah, Apartemen & Properti Terbaik | GadingPro Real Estate</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
@@ -22,6 +22,50 @@
         }
     </script>
     <style>
+
+         /* Mobile Optimization */
+    @media (max-width: 640px) {
+        /* Hero Section */
+        #hero h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        
+        /* Property Cards */
+        .property-card {
+            margin-bottom: 1.5rem;
+        }
+        
+        .property-card img {
+            height: 250px;
+        }
+        
+        /* Testimonial Cards */
+        .testimonial-card {
+            padding: 1.5rem;
+        }
+        
+        /* Contact Form */
+        .contact-form input,
+        .contact-form select {
+            font-size: 16px; /* Prevent zoom on iOS */
+        }
+        
+        /* Floating Navigation */
+        .floating-nav {
+            bottom: 80px;
+            right: 15px;
+        }
+    }
+
+    /* Tablet Optimization */
+    @media (min-width: 641px) and (max-width: 1023px) {
+        #hero h1 {
+            font-size: 3.5rem;
+        }
+    }
+
+                                
         @keyframes float {
             0% { transform: translateY(0px) rotate(-1deg); }
             50% { transform: translateY(-20px) rotate(1deg); }
@@ -31,6 +75,7 @@
         .gradient-text { 
             background: linear-gradient(45deg, #E5974B, #F2AD6A, #D17F2B);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .parallax { background-attachment: fixed; }
@@ -51,73 +96,94 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        /* Mobile menu animation */
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .mobile-menu.open {
+            max-height: 500px;
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50 antialiased">
-    <!-- Preloader -->
-    <div id="preloader" class="fixed inset-0 z-[9999] bg-white flex items-center justify-center transition-opacity duration-500">
-        <div class="space-y-4 text-center">
-            <div class="floating inline-block">
-                <svg class="w-24 h-24 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                </svg>
+
+    <!-- Compact Interactive Navigation Bar -->
+<nav id="navbar" class="fixed w-full z-50 bg-[#E5974B] backdrop-blur-md shadow-md transition-all duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="#hero" class="block">
+                    <img src="img/logo2.png" 
+                    alt="Gading Pro Logo" 
+                    class="h-12 md:h-16 lg:h-20 w-auto object-contain">
+
+                </a>
             </div>
-            <p class="text-xl font-semibold text-gray-600">Loading Premium Experience...</p>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#hero" class="nav-link group relative px-3 py-2 text-white hover:text-white/90 transition-colors">
+                    <span>Home</span>
+                    <div class="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all duration-300"></div>
+                </a>
+                <a href="#properties" class="nav-link group relative px-3 py-2 text-white hover:text-white/90 transition-colors">
+                    <span>Properties</span>
+                    <div class="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all duration-300"></div>
+                </a>
+                <a href="#amenities" class="nav-link group relative px-3 py-2 text-white hover:text-white/90 transition-colors">
+                    <span>Amenities</span>
+                    <div class="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all duration-300"></div>
+                </a>
+                <a href="#contact" class="nav-link group relative px-3 py-2 text-white hover:text-white/90 transition-colors">
+                    <span>Contact</span>
+                    <div class="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all duration-300"></div>
+                </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 
-
-<nav id="navbar" class="fixed w-full z-50 bg-[#E5974B] backdrop-blur-md shadow-sm transition-all duration-300 overflow-visible">
-  <div class="container mx-auto px-6 py-2">
-    <div class="flex items-center justify-between">
-      
-      <!-- Logo besar, tidak menempel dinding -->
-      <div class="pl-2 pt-1">
-        <img src="img/GadingPro.png"
-             alt="GadingPro Logo"
-             class="h-10 w-auto object-contain scale-[6] pl-3" />
-      </div>
-
-      <!-- Navigation links -->
-      <div class="hidden lg:flex space-x-8 items-center">
-        <a href="#hero" class="nav-link group relative px-4 py-2">
-          <span class="text-white group-hover:text-white/90">Home</span>
-          <div class="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all"></div>
-        </a>
-        <!-- Tambahkan item lainnya jika perlu -->
-      </div>
-
-      <!-- Action buttons -->
-      <div class="flex items-center space-x-4">
-        <button class="bg-white text-[#E5974B] px-6 py-2 rounded-full hover:bg-gray-100 flex items-center font-semibold">
-          <i class="fas fa-phone mr-2"></i>+62 21 1234 5678
-        </button>
-        <button id="themeToggle" class="p-2 rounded-full hover:bg-white/20">
-          <i class="fas fa-moon text-xl text-white"></i>
-        </button>
-      </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu md:hidden bg-[#E5974B]">
+        <div class="px-4 pt-2 pb-6 space-y-2">
+            <a href="#hero" class="block px-3 py-2 text-white hover:bg-white/10 rounded-md transition-colors">Home</a>
+            <a href="#properties" class="block px-3 py-2 text-white hover:bg-white/10 rounded-md transition-colors">Properties</a>
+            <a href="#amenities" class="block px-3 py-2 text-white hover:bg-white/10 rounded-md transition-colors">Amenities</a>
+            <a href="#contact" class="block px-3 py-2 text-white hover:bg-white/10 rounded-md transition-colors">Contact</a>
+        </div>
     </div>
-  </div>
 </nav>
 
+
     <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center parallax" 
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-20 parallax" 
              style="background-image: url('https://agents-events-prod.storage.googleapis.com/wp-content/uploads/sites/20/2024/03/28080532/375x360px-Msite-Homepage-Banner-SmartWeb.jpg')">
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
         
         <div class="relative z-10 container mx-auto px-6">
             <div class="max-w-4xl" data-aos="fade-up">
-                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                     Redefining <span class="gradient-text">Luxury Living</span> in Modern Era
                 </h1>
-                <p class="text-xl text-gray-200 mb-8">Experience unparalleled elegance with our curated selection of premium properties in Indonesia's most exclusive locations</p>
+                <p class="text-lg sm:text-xl text-gray-200 mb-8">Experience unparalleled elegance with our curated selection of premium properties in Indonesia's most exclusive locations</p>
                 
-                <div class="flex space-x-4">
-                    <a href="#properties" class="bg-primary text-white px-8 py-4 rounded-full text-lg font-semibold 
-                       hover:bg-primaryDark transition-all transform hover:scale-105 shadow-xl flex items-center">
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#properties" class="bg-primary text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full text-lg font-semibold 
+                       hover:bg-primaryDark transition-all transform hover:scale-105 shadow-xl flex items-center justify-center">
                         Explore Properties <i class="fas fa-arrow-down ml-3"></i>
                     </a>
-                    <button class="glass-effect text-white px-8 py-4 rounded-full hover:bg-white/10 transition-all">
+                    <button class="glass-effect text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-white/10 transition-all flex items-center justify-center">
                         <i class="fas fa-play mr-3"></i>Watch Story
                     </button>
                 </div>
@@ -132,12 +198,12 @@
     </section>
 
     <!-- Property Filters -->
-    <section class="py-20 bg-white">
+    <section class="py-16 bg-white">
         <div class="container mx-auto px-6">
-            <div class="max-w-5xl mx-auto bg-gray-50 rounded-2xl p-8 shadow-xl">
+            <div class="max-w-5xl mx-auto bg-gray-50 rounded-2xl p-6 sm:p-8 shadow-xl">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="relative">
-                        <select class="w-full p-4 border-2 border-gray-200 rounded-xl appearance-none 
+                        <select class="w-full p-3 sm:p-4 border-2 border-gray-200 rounded-xl appearance-none 
                                   focus:border-primary focus:ring-2 focus:ring-primaryLight bg-white">
                             <option>Property Type</option>
                             <option>Luxury Villa</option>
@@ -145,40 +211,65 @@
                             <option>Waterfront Estate</option>
                         </select>
                     </div>
-                    <!-- More filter elements -->
+                    <div class="relative">
+                        <select class="w-full p-3 sm:p-4 border-2 border-gray-200 rounded-xl appearance-none 
+                                  focus:border-primary focus:ring-2 focus:ring-primaryLight bg-white">
+                            <option>Location</option>
+                            <option>Jakarta</option>
+                            <option>Bali</option>
+                            <option>Bandung</option>
+                        </select>
+                    </div>
+                    <div class="relative">
+                        <select class="w-full p-3 sm:p-4 border-2 border-gray-200 rounded-xl appearance-none 
+                                  focus:border-primary focus:ring-2 focus:ring-primaryLight bg-white">
+                            <option>Price Range</option>
+                            <option>Rp 5M - 10M</option>
+                            <option>Rp 10M - 20M</option>
+                            <option>Rp 20M+</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-6 text-center">
+                    <button class="bg-primary text-white px-8 py-3 rounded-full hover:bg-primaryDark transition-colors font-semibold">
+                        Search Properties
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Featured Properties Grid -->
-    <section id="properties" class="py-20 bg-gradient-to-b from-white to-amber-50">
+    <section id="properties" class="py-16 bg-gradient-to-b from-white to-amber-50">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">Signature Collections</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 gradient-text" data-aos="fade-up">Signature Collections</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Discover our exclusive selection of premium properties</p>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Property Card 1 -->
-                <div class="property-card hover-3d relative rounded-3xl overflow-hidden shadow-2xl 
+                <div class="property-card hover-3d relative rounded-3xl overflow-hidden shadow-xl 
                      transition-all duration-300" data-aos="flip-left">
-                    <div class="absolute top-6 right-6 z-10 flex space-x-2">
-                        <button class="bg-white p-3 rounded-full shadow-lg hover:bg-amber-100 tooltip" 
+                    <div class="absolute top-4 right-4 z-10 flex space-x-2">
+                        <button class="bg-white p-2 rounded-full shadow-lg hover:bg-amber-100 tooltip" 
                                 data-tooltip="Add to Favorites">
-                            <i class="fas fa-heart text-red-500"></i>
+                            <i class="fas fa-heart text-red-500 text-sm"></i>
                         </button>
-                        <button class="bg-white p-3 rounded-full shadow-lg hover:bg-amber-100 tooltip" 
+                        <button class="bg-white p-2 rounded-full shadow-lg hover:bg-amber-100 tooltip" 
                                 data-tooltip="Compare Property">
-                            <i class="fas fa-balance-scale text-primary"></i>
+                            <i class="fas fa-balance-scale text-primary text-sm"></i>
                         </button>
                     </div>
                     
-                    <div class="relative h-96 overflow-hidden">
-                        <img src="https://source.unsplash.com/800x600/?modern,villa" 
+                    <div class="relative h-64 sm:h-80 overflow-hidden">
+                        <img src="img/perumahan.png" 
                              class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                         <div class="property-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent 
-                                  opacity-0 transition-all duration-300 flex items-end p-8">
+                                  opacity-0 transition-all duration-300 flex items-end p-6">
                             <div class="text-white">
-                                <h3 class="text-2xl font-bold mb-2">Matera Signature</h3>
-                                <div class="flex items-center space-x-4">
+                                <h3 class="text-xl font-bold mb-2">Matera Signature</h3>
+                                <div class="flex items-center space-x-4 text-sm">
                                     <span class="flex items-center">
                                         <i class="fas fa-expand-arrows-alt mr-2"></i>850m²
                                     </span>
@@ -190,315 +281,853 @@
                         </div>
                     </div>
                     
-                    <div class="bg-white p-8">
+                    <div class="bg-white p-6">
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <h3 class="text-2xl font-bold text-gray-800">Matera Signature</h3>
-                                <p class="text-gray-600">Gading Serpong, Tangerang</p>
+                                <h3 class="text-xl font-bold text-gray-800">Matera Signature</h3>
+                                <p class="text-gray-600 text-sm">Gading Serpong, Tangerang</p>
                             </div>
-                            <span class="bg-amber-100 text-primary px-4 py-1 rounded-full text-sm">Premium</span>
+                            <span class="bg-amber-100 text-primary px-3 py-1 rounded-full text-xs">Premium</span>
                         </div>
                         
-                        <div class="flex items-center justify-between mb-6">
-                            <div class="flex space-x-4 text-gray-500">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex space-x-3 text-gray-500 text-sm">
                                 <span class="flex items-center">
-                                    <i class="fas fa-bed mr-2"></i>5
+                                    <i class="fas fa-bed mr-1"></i>5
                                 </span>
                                 <span class="flex items-center">
-                                    <i class="fas fa-bath mr-2"></i>6
+                                    <i class="fas fa-bath mr-1"></i>6
                                 </span>
                                 <span class="flex items-center">
-                                    <i class="fas fa-car mr-2"></i>3
+                                    <i class="fas fa-car mr-1"></i>3
                                 </span>
                             </div>
-                            <p class="text-2xl font-bold text-primary">Rp 15.8M</p>
+                            <p class="text-xl font-bold text-primary">Rp 15.8M</p>
                         </div>
                         
                         <div class="flex space-x-2">
-                            <button class="flex-1 bg-primary text-white py-3 rounded-lg hover:bg-primaryDark 
-                                    transition-all flex items-center justify-center">
+                            <button class="flex-1 bg-primary text-white py-2 rounded-lg hover:bg-primaryDark 
+                                    transition-all flex items-center justify-center text-sm sm:text-base">
                                 <i class="fas fa-calendar-check mr-2"></i>Schedule Tour
                             </button>
-                            <button class="w-14 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 
+                            <button class="w-12 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 
                                     flex items-center justify-center">
-                                <i class="fas fa-ellipsis-h"></i>
+                                <i class="fas fa-ellipsis-h text-sm"></i>
                             </button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Repeat 5 more property cards with different designs -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Virtual Reality Section -->
-    <section class="py-20 bg-amber-900 text-white">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8" data-aos="fade-right">
-                    <h2 class="text-4xl font-bold">Immersive 360° Virtual Reality Experience</h2>
-                    <p class="text-gray-300 text-lg">Explore every detail of our properties through cutting-edge VR technology</p>
-                    <ul class="space-y-6">
-                        <li class="flex items-center space-x-4">
-                            <div class="bg-white/10 p-3 rounded-xl">
-                                <i class="fas fa-vr-cardboard text-3xl text-amber-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-semibold">VR Headset Compatibility</h4>
-                                <p class="text-gray-400">Full support for Oculus Rift and HTC Vive</p>
-                            </div>
-                        </li>
-                        <!-- More VR features -->
-                    </ul>
-                </div>
-                
-                <div class="relative rounded-3xl overflow-hidden shadow-2xl" data-aos="fade-left">
-                    <img src="https://source.unsplash.com/800x600/?virtual,reality" 
-                         class="w-full h-[500px] object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 flex items-end p-8">
-                        <button class="bg-white text-primary px-8 py-3 rounded-full hover:bg-gray-100 
-                                flex items-center">
-                            <i class="fas fa-play mr-2"></i>Start VR Experience
+                <!-- Property Card 2 -->
+                <div class="property-card hover-3d relative rounded-3xl overflow-hidden shadow-xl 
+                     transition-all duration-300" data-aos="flip-left" data-aos-delay="100">
+                    <div class="absolute top-4 right-4 z-10 flex space-x-2">
+                        <button class="bg-white p-2 rounded-full shadow-lg hover:bg-amber-100 tooltip" 
+                                data-tooltip="Add to Favorites">
+                            <i class="fas fa-heart text-red-500 text-sm"></i>
+                        </button>
+                        <button class="bg-white p-2 rounded-full shadow-lg hover:bg-amber-100 tooltip" 
+                                data-tooltip="Compare Property">
+                            <i class="fas fa-balance-scale text-primary text-sm"></i>
                         </button>
                     </div>
+                    
+                    <div class="relative h-64 sm:h-80 overflow-hidden">
+                        <img src="img/rumah2.png" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="property-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent 
+                                  opacity-0 transition-all duration-300 flex items-end p-6">
+                            <div class="text-white">
+                                <h3 class="text-xl font-bold mb-2">The Penthouse</h3>
+                                <div class="flex items-center space-x-4 text-sm">
+                                    <span class="flex items-center">
+                                        <i class="fas fa-expand-arrows-alt mr-2"></i>650m²
+                                    </span>
+                                    <span class="flex items-center">
+                                        <i class="fas fa-layer-group mr-2"></i>2 Floors
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">The Penthouse</h3>
+                                <p class="text-gray-600 text-sm">SCBD, Jakarta</p>
+                            </div>
+                            <span class="bg-amber-100 text-primary px-3 py-1 rounded-full text-xs">New</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex space-x-3 text-gray-500 text-sm">
+                                <span class="flex items-center">
+                                    <i class="fas fa-bed mr-1"></i>4
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="fas fa-bath mr-1"></i>4
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="fas fa-car mr-1"></i>2
+                                </span>
+                            </div>
+                            <p class="text-xl font-bold text-primary">Rp 22.5M</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-primary text-white py-2 rounded-lg hover:bg-primaryDark 
+                                    transition-all flex items-center justify-center text-sm sm:text-base">
+                                <i class="fas fa-calendar-check mr-2"></i>Schedule Tour
+                            </button>
+                            <button class="w-12 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 
+                                    flex items-center justify-center">
+                                <i class="fas fa-ellipsis-h text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Property Card 3 -->
+                <div class="property-card hover-3d relative rounded-3xl overflow-hidden shadow-xl 
+                     transition-all duration-300" data-aos="flip-left" data-aos-delay="200">
+                    <div class="absolute top-4 right-4 z-10 flex space-x-2">
+                        <button class="bg-white p-2 rounded-full shadow-lg hover:bg-amber-100 tooltip" 
+                                data-tooltip="Add to Favorites">
+                            <i class="fas fa-heart text-red-500 text-sm"></i>
+                        </button>
+                        <button class="bg-white p-2 rounded-full shadow-lg hover:bg-amber-100 tooltip" 
+                                data-tooltip="Compare Property">
+                            <i class="fas fa-balance-scale text-primary text-sm"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="relative h-64 sm:h-80 overflow-hidden">
+                        <img src="img/oceanview.jpg" 
+                             class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                        <div class="property-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent 
+                                  opacity-0 transition-all duration-300 flex items-end p-6">
+                            <div class="text-white">
+                                <h3 class="text-xl font-bold mb-2">Oceanview Retreat</h3>
+                                <div class="flex items-center space-x-4 text-sm">
+                                    <span class="flex items-center">
+                                        <i class="fas fa-expand-arrows-alt mr-2"></i>1200m²
+                                    </span>
+                                    <span class="flex items-center">
+                                        <i class="fas fa-layer-group mr-2"></i>4 Floors
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">Oceanview Retreat</h3>
+                                <p class="text-gray-600 text-sm">Uluwatu, Bali</p>
+                            </div>
+                            <span class="bg-amber-100 text-primary px-3 py-1 rounded-full text-xs">Featured</span>
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex space-x-3 text-gray-500 text-sm">
+                                <span class="flex items-center">
+                                    <i class="fas fa-bed mr-1"></i>6
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="fas fa-bath mr-1"></i>7
+                                </span>
+                                <span class="flex items-center">
+                                    <i class="fas fa-car mr-1"></i>4
+                                </span>
+                            </div>
+                            <p class="text-xl font-bold text-primary">Rp 35.2M</p>
+                        </div>
+                        
+                        <div class="flex space-x-2">
+                            <button class="flex-1 bg-primary text-white py-2 rounded-lg hover:bg-primaryDark 
+                                    transition-all flex items-center justify-center text-sm sm:text-base">
+                                <i class="fas fa-calendar-check mr-2"></i>Schedule Tour
+                            </button>
+                            <button class="w-12 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 
+                                    flex items-center justify-center">
+                                <i class="fas fa-ellipsis-h text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-primary text-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-colors font-semibold">
+                    View All Properties
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Luxury Amenities Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">Exclusive Amenities</h2>
+    <!-- Property Showcase Section -->
+<section id="property-showcase" class="py-16 bg-amber-900 text-white">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6" data-aos="fade-right">
+                <h2 class="text-3xl sm:text-4xl font-bold">Explore Our Featured Properties</h2>
+                <p class="text-gray-300 text-lg">Discover detailed property listings with high-quality visuals and key insights.</p>
+                <ul class="space-y-4">
+                    <li class="flex items-start space-x-4">
+                        <div class="bg-white/10 p-3 rounded-xl flex-shrink-0">
+                            <i class="fas fa-map-marker-alt text-2xl text-amber-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold">Prime Location Insights</h4>
+                            <p class="text-gray-400">Get key details on nearby facilities, transport options, and community highlights.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-4">
+                        <div class="bg-white/10 p-3 rounded-xl flex-shrink-0">
+                            <i class="fas fa-camera text-2xl text-amber-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold">High-Resolution Images</h4>
+                            <p class="text-gray-400">View each property in detail with optimized, high-quality visuals.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start space-x-4">
+                        <div class="bg-white/10 p-3 rounded-xl flex-shrink-0">
+                            <i class="fas fa-home text-2xl text-amber-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold">Customizable Viewing Options</h4>
+                            <p class="text-gray-400">Filter properties based on size, price, and features to find the perfect match.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="amenity-card glass-effect p-8 rounded-2xl hover:bg-white/20 transition-all" 
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl" data-aos="fade-left">
+                <img src="https://source.unsplash.com/800x600/?house,property"
+                     class="w-full h-[400px] sm:h-[500px] object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 flex items-end p-6">
+                    <button class="bg-white text-primary px-6 py-3 rounded-full hover:bg-gray-100 
+                            flex items-center">
+                        <i class="fas fa-search mr-2"></i>View Featured Properties
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Luxury Amenities Section -->
+    <section id="amenities" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4 gradient-text" data-aos="fade-up">Exclusive Amenities</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Premium facilities designed for your comfort and luxury</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="amenity-card glass-effect p-6 rounded-2xl hover:bg-white/20 transition-all hover:shadow-lg" 
                      data-aos="zoom-in">
                     <div class="text-primary mb-4">
-                        <i class="fas fa-infinity text-4xl"></i>
+                        <i class="fas fa-infinity text-3xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-2">Infinity Pool</h3>
-                    <p class="text-gray-600">Private rooftop pools with panoramic city views</p>
+                    <h3 class="text-lg font-bold mb-2">Infinity Pool</h3>
+                    <p class="text-gray-600 text-sm">Private rooftop pools with panoramic city views</p>
                 </div>
-                <!-- 7 more amenity cards -->
+                
+                <div class="amenity-card glass-effect p-6 rounded-2xl hover:bg-white/20 transition-all hover:shadow-lg" 
+                     data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-spa text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Wellness Spa</h3>
+                    <p class="text-gray-600 text-sm">World-class spa facilities with professional therapists</p>
+                </div>
+                
+                <div class="amenity-card glass-effect p-6 rounded-2xl hover:bg-white/20 transition-all hover:shadow-lg" 
+                     data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-dumbbell text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Fitness Center</h3>
+                    <p class="text-gray-600 text-sm">State-of-the-art gym with personal trainers</p>
+                </div>
+                
+                <div class="amenity-card glass-effect p-6 rounded-2xl hover:bg-white/20 transition-all hover:shadow-lg" 
+                     data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-concierge-bell text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Concierge Service</h3>
+                    <p class="text-gray-600 text-sm">24/7 personalized service for all your needs</p>
+                </div>
+                
+                <div class="amenity-card glass-effect p-6 rounded-2xl hover:bg-white/20 transition-all hover:shadow-lg" 
+                     data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-utensils text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Gourmet Dining</h3>
+                    <p class="text-gray-600 text-sm">Michelin-starred chefs and private dining rooms</p>
+                </div>
+                
+                <div class="amenity-card glass-effect p-6 rounded-2xl hover:bg-white/20 transition-all hover:shadow-lg" 
+                     data-aos="zoom-in" data-aos-delay="500">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-shield-alt text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Security</h3>
+                    <p class="text-gray-600 text-sm">24/7 security with advanced surveillance systems</p>
+                </div>
+                
+                <div class="amenity-card glass-effect p-6 rounded-2xl hover:bg-white/20 transition-all hover:shadow-lg" 
+                     data-aos="zoom-in" data-aos-delay="600">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-car text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Valet Parking</h3>
+                    <p class="text-gray-600 text-sm">Professional valet service for your vehicles</p>
+                </div>
+                
+                <div class="amenity-card glass-effect p-6 rounded-2xl hover:bg-white/20 transition-all hover:shadow-lg" 
+                     data-aos="zoom-in" data-aos-delay="700">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-swimming-pool text-3xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">Kids Club</h3>
+                    <p class="text-gray-600 text-sm">Supervised activities and play areas for children</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Interactive Map Section -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-6">
-            <div class="bg-white rounded-3xl shadow-xl p-8">
-                <h2 class="text-4xl font-bold mb-8 gradient-text" data-aos="fade-up">Strategic Locations</h2>
-                <div class="h-[600px] rounded-2xl overflow-hidden bg-gray-200" id="map">
-                    <!-- Integrated Map -->
+            <div class="bg-white rounded-3xl shadow-xl p-6 sm:p-8">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-6 gradient-text" data-aos="fade-up">Strategic Locations</h2>
+                <div class="h-[400px] sm:h-[500px] rounded-2xl overflow-hidden bg-gray-200 relative" id="map">
+                    <!-- Map placeholder with overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center p-6 bg-white/90 rounded-lg shadow-lg max-w-md">
+                            <i class="fas fa-map-marked-alt text-4xl text-primary mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Interactive Property Map</h3>
+                            <p class="text-gray-600 mb-4">Explore our properties across premium locations</p>
+                            <button class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primaryDark transition-colors">
+                                View Map
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                    <div class="location-card p-6 rounded-xl hover:bg-amber-50 transition-all">
-                        <h3 class="text-xl font-bold mb-2">Gading Serpong</h3>
-                        <div class="flex items-center text-gray-600">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                    <div class="location-card p-4 sm:p-6 rounded-xl hover:bg-amber-50 transition-all border border-gray-100 hover:border-primary/20">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2">Gading Serpong</h3>
+                        <div class="flex items-center text-gray-600 text-sm">
                             <i class="fas fa-building mr-2"></i>
                             185 Available Properties
                         </div>
                     </div>
-                    <!-- More location cards -->
+                    
+                    <div class="location-card p-4 sm:p-6 rounded-xl hover:bg-amber-50 transition-all border border-gray-100 hover:border-primary/20">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2">SCBD Jakarta</h3>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <i class="fas fa-building mr-2"></i>
+                            92 Available Properties
+                        </div>
+                    </div>
+                    
+                    <div class="location-card p-4 sm:p-6 rounded-xl hover:bg-amber-50 transition-all border border-gray-100 hover:border-primary/20">
+                        <h3 class="text-lg sm:text-xl font-bold mb-2">Uluwatu Bali</h3>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <i class="fas fa-building mr-2"></i>
+                            47 Available Properties
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonial Carousel -->
-    <section class="py-20 bg-amber-900 text-white">
-        <div class="container mx-auto px-6">
-            <div class="swiper testimonialSwiper">
-                <div class="swiper-wrapper">
-                    <!-- Testimonial Slides -->
-                    <div class="swiper-slide">
-                        <div class="max-w-3xl mx-auto text-center py-16">
-                            <div class="mb-8">
-                                <img src="https://i.pravatar.cc/150?img=1" 
-                                     class="w-24 h-24 rounded-full mx-auto border-4 border-white">
-                            </div>
-                            <p class="text-xl italic mb-6">"The attention to detail and personalized service exceeded all our expectations."</p>
-                            <h4 class="text-lg font-bold">Sarah Johnson</h4>
-                            <p class="text-gray-300">CEO of Tech Innovators</p>
+    <section class="py-16 bg-amber-900 text-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4" data-aos="fade-up">What Our Clients Say</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Testimonials from our satisfied customers</p>
+        </div>
+
+        <div class="swiper testimonialSwiper">
+            <div class="swiper-wrapper pb-12">
+                <!-- Testimonial Slide 1 -->
+                <div class="swiper-slide">
+                    <div class="max-w-3xl mx-auto text-center px-4 py-8">
+                        <div class="mb-6">
+                            <img src="https://i.pravatar.cc/150?img=5" 
+                                 class="w-20 h-20 rounded-full mx-auto border-4 border-white">
+                        </div>
+                        <div class="text-amber-200 mb-4">
+                            <i class="fas fa-quote-left text-2xl"></i>
+                        </div>
+                        <p class="text-lg italic mb-6">"The attention to detail and personalized service exceeded all our expectations. Paramount Luxe truly understands luxury living."</p>
+                        <h4 class="text-lg font-bold">Michael Johnson</h4>
+                        <p class="text-gray-300">CEO of Tech Innovators</p>
+                        <div class="flex justify-center mt-2">
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
                         </div>
                     </div>
-                    <!-- More slides -->
                 </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="bg-gradient-to-br from-primary to-amber-700 rounded-3xl shadow-2xl p-16 text-white">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div data-aos="fade-right">
-                        <h2 class="text-4xl font-bold mb-6">Begin Your Luxury Journey</h2>
-                        <p class="text-xl mb-8">Schedule a private consultation with our luxury property specialists</p>
-                        <div class="space-y-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="bg-white/10 p-3 rounded-full">
-                                    <i class="fas fa-phone text-2xl"></i>
-                                </div>
-                                <div>
-                                    <p class="font-semibold">+62 21 1234 5678</p>
-                                    <p class="text-sm opacity-80">24/7 Support</p>
-                                </div>
-                            </div>
-                            <!-- More contact methods -->
+                <!-- Testimonial Slide 2 -->
+                <div class="swiper-slide">
+                    <div class="max-w-3xl mx-auto text-center px-4 py-8">
+                        <div class="mb-6">
+                            <img src="https://i.pravatar.cc/150?img=11" 
+                                 class="w-20 h-20 rounded-full mx-auto border-4 border-white">
+                        </div>
+                        <div class="text-amber-200 mb-4">
+                            <i class="fas fa-quote-left text-2xl"></i>
+                        </div>
+                        <p class="text-lg italic mb-6">"From the first consultation to the final handover, the team at Paramount Luxe provided exceptional service. Our new home is perfect."</p>
+                        <h4 class="text-lg font-bold">Sarah Williams</h4>
+                        <p class="text-gray-300">Marketing Director</p>
+                        <div class="flex justify-center mt-2">
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
                         </div>
                     </div>
-                    
-                    <form class="space-y-6" data-aos="fade-left">
-                        <div>
-                            <input type="text" placeholder="Your Name" 
-                                   class="w-full p-4 bg-white/10 rounded-xl border border-white/20 
-                                          focus:outline-none focus:ring-2 focus:ring-white">
-                        </div>
-                        <!-- More form fields -->
-                        <button class="w-full bg-white text-primary py-4 rounded-xl font-semibold 
-                               hover:bg-gray-100 transition-all">
-                            Request Consultation
-                        </button>
-                    </form>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Image Gallery -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16 gradient-text" data-aos="fade-up">Luxury in Every Detail</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Masonry Gallery Items -->
-                <div class="relative group overflow-hidden rounded-2xl" data-aos="zoom-in">
-                    <img src="https://source.unsplash.com/600x800/?interior,design" 
-                         class="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform">
-                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 
-                              group-hover:opacity-100 transition-opacity">
-                        <button class="bg-white text-primary px-8 py-3 rounded-full">
-                            <i class="fas fa-expand mr-2"></i>View Fullscreen
-                        </button>
+                <!-- Testimonial Slide 3 -->
+                <div class="swiper-slide">
+                    <div class="max-w-3xl mx-auto text-center px-4 py-8">
+                        <div class="mb-6">
+                            <img src="https://i.pravatar.cc/150?img=7" 
+                                 class="w-20 h-20 rounded-full mx-auto border-4 border-white">
+                        </div>
+                        <div class="text-amber-200 mb-4">
+                            <i class="fas fa-quote-left text-2xl"></i>
+                        </div>
+                        <p class="text-lg italic mb-6">"The VR tour feature allowed us to visualize our future home perfectly. The quality of construction is outstanding."</p>
+                        <h4 class="text-lg font-bold">David Chen</h4>
+                        <p class="text-gray-300">Investment Banker</p>
+                        <div class="flex justify-center mt-2">
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star text-amber-300"></i>
+                            <i class="fas fa-star-half-alt text-amber-300"></i>
+                        </div>
                     </div>
                 </div>
-                <!-- 5 more gallery items -->
             </div>
-        </div>
-    </section>
-
-    <!-- Floating Navigation -->
-    <div class="fixed right-8 bottom-32 hidden lg:block">
-        <div class="flex flex-col space-y-4">
-            <a href="#hero" class="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center 
-                               hover:bg-amber-100 tooltip" data-tooltip="Back to Top">
-                <i class="fas fa-chevron-up"></i>
-            </a>
-            <a href="#properties" class="w-12 h-12 bg-white shadow-lg rounded-full flex items-center justify-center 
-                               hover:bg-amber-100 tooltip" data-tooltip="Properties">
-                <i class="fas fa-home"></i>
-            </a>
-            <!-- More floating nav items -->
+            <div class="swiper-pagination !bottom-0"></div>
         </div>
     </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-amber-900 text-white">
-        <div class="container mx-auto px-6 py-20">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Footer Sections -->
-                <div>
-                    <h3 class="text-xl font-bold mb-6">Paramount Luxe</h3>
-                    <p class="text-gray-300">Redefining luxury living through exceptional design and unparalleled service</p>
+<!-- Contact Section -->
+<section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="bg-gradient-to-br from-primary to-amber-700 rounded-3xl shadow-2xl p-8 sm:p-12 lg:p-16 text-white">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6">Begin Your Luxury Journey</h2>
+                    <p class="text-lg sm:text-xl mb-8">Schedule a private consultation with our luxury property specialists</p>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-white/10 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-lg">+62 21 1234 5678</p>
+                                <p class="text-sm opacity-80">24/7 Support</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-white/10 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-lg">info@paramountluxe.com</p>
+                                <p class="text-sm opacity-80">Email Inquiry</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-white/10 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-lg">Gading Serpong Office</p>
+                                <p class="text-sm opacity-80">Jl. Boulevard Raya No. 1, Tangerang</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- More footer columns -->
+                
+                <form class="space-y-6" data-aos="fade-left">
+                    <div>
+                        <input type="text" placeholder="Your Name" 
+                               class="w-full p-4 bg-white/10 rounded-xl border border-white/20 
+                                      focus:outline-none focus:ring-2 focus:ring-white placeholder-white/70">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Email Address" 
+                               class="w-full p-4 bg-white/10 rounded-xl border border-white/20 
+                                      focus:outline-none focus:ring-2 focus:ring-white placeholder-white/70">
+                    </div>
+                    <div>
+                        <input type="tel" placeholder="Phone Number" 
+                               class="w-full p-4 bg-white/10 rounded-xl border border-white/20 
+                                      focus:outline-none focus:ring-2 focus:ring-white placeholder-white/70">
+                    </div>
+                    <div>
+                        <select class="w-full p-4 bg-white/10 rounded-xl border border-white/20 
+                                  focus:outline-none focus:ring-2 focus:ring-white appearance-none">
+                            <option class="bg-amber-700">I'm interested in</option>
+                            <option class="bg-amber-700">Luxury Villa</option>
+                            <option class="bg-amber-700">Penthouse</option>
+                            <option class="bg-amber-700">Waterfront Estate</option>
+                            <option class="bg-amber-700">Other</option>
+                        </select>
+                    </div>
+                    <button class="w-full bg-white text-primary py-4 rounded-xl font-semibold 
+                           hover:bg-gray-100 transition-all text-lg">
+                        Request Consultation
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Image Gallery -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4 gradient-text" data-aos="fade-up">Luxury in Every Detail</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Explore our premium properties through these stunning images</p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Gallery Item 1 -->
+            <div class="relative group overflow-hidden rounded-2xl" data-aos="zoom-in">
+                <img src="https://source.unsplash.com/600x800/?luxury,interior" 
+                     class="w-full h-64 sm:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 
+                          group-hover:opacity-100 transition-opacity duration-300">
+                    <button class="bg-white text-primary px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-expand mr-2"></i>View Fullscreen
+                    </button>
+                </div>
             </div>
             
-            <div class="border-t border-white/20 mt-12 pt-8">
-                <div class="flex justify-between items-center">
-                    <p class="text-gray-300">&copy; 2025 Paramount Luxe. All Rights Reserved</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="hover:text-amber-400"><i class="fab fa-instagram"></i></a>
-                        <!-- More social links -->
-                    </div>
+            <!-- Gallery Item 2 -->
+            <div class="relative group overflow-hidden rounded-2xl" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://source.unsplash.com/600x800/?modern,kitchen" 
+                     class="w-full h-64 sm:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 
+                          group-hover:opacity-100 transition-opacity duration-300">
+                    <button class="bg-white text-primary px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-expand mr-2"></i>View Fullscreen
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Gallery Item 3 -->
+            <div class="relative group overflow-hidden rounded-2xl" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://source.unsplash.com/600x800/?luxury,bathroom" 
+                     class="w-full h-64 sm:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 
+                          group-hover:opacity-100 transition-opacity duration-300">
+                    <button class="bg-white text-primary px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-expand mr-2"></i>View Fullscreen
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Gallery Item 4 -->
+            <div class="relative group overflow-hidden rounded-2xl" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://source.unsplash.com/600x800/?luxury,bedroom" 
+                     class="w-full h-64 sm:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 
+                          group-hover:opacity-100 transition-opacity duration-300">
+                    <button class="bg-white text-primary px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-expand mr-2"></i>View Fullscreen
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Gallery Item 5 -->
+            <div class="relative group overflow-hidden rounded-2xl" data-aos="zoom-in" data-aos-delay="400">
+                <img src="https://source.unsplash.com/600x800/?luxury,pool" 
+                     class="w-full h-64 sm:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 
+                          group-hover:opacity-100 transition-opacity duration-300">
+                    <button class="bg-white text-primary px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-expand mr-2"></i>View Fullscreen
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Gallery Item 6 -->
+            <div class="relative group overflow-hidden rounded-2xl" data-aos="zoom-in" data-aos-delay="500">
+                <img src="https://source.unsplash.com/600x800/?luxury,livingroom" 
+                     class="w-full h-64 sm:h-80 object-cover transform group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 
+                          group-hover:opacity-100 transition-opacity duration-300">
+                    <button class="bg-white text-primary px-6 py-2 rounded-full hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-expand mr-2"></i>View Fullscreen
+                    </button>
                 </div>
             </div>
         </div>
-    </footer>
+        
+        <div class="text-center mt-12">
+            <button class="border-2 border-primary text-primary px-8 py-3 rounded-full hover:bg-primary hover:text-white transition-colors font-semibold">
+                View More Photos
+            </button>
+        </div>
+    </div>
+</section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: false,
-            mirror: true
-        });
+<!-- Floating Navigation -->
+<div class="fixed right-4 sm:right-6 bottom-24 hidden lg:block z-40">
+    <div class="flex flex-col space-y-3">
+        <a href="#hero" class="w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center 
+                           hover:bg-amber-100 tooltip group" data-tooltip="Back to Top">
+            <i class="fas fa-chevron-up text-gray-700 group-hover:text-primary"></i>
+        </a>
+        <a href="#properties" class="w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center 
+                           hover:bg-amber-100 tooltip group" data-tooltip="Properties">
+            <i class="fas fa-home text-gray-700 group-hover:text-primary"></i>
+        </a>
+        <a href="#amenities" class="w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center 
+                           hover:bg-amber-100 tooltip group" data-tooltip="Amenities">
+            <i class="fas fa-swimming-pool text-gray-700 group-hover:text-primary"></i>
+        </a>
+        <a href="#contact" class="w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center 
+                           hover:bg-amber-100 tooltip group" data-tooltip="Contact">
+            <i class="fas fa-envelope text-gray-700 group-hover:text-primary"></i>
+        </a>
+    </div>
+</div>
 
-        // Initialize Swiper
-        const testimonialSwiper = new Swiper('.testimonialSwiper', {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            autoplay: {
-                delay: 5000,
-            }
-        });
-
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            themeToggle.querySelector('i').classList.toggle('fa-moon');
-            themeToggle.querySelector('i').classList.toggle('fa-sun');
-        });
-
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        });
-
-        // Dynamic Navbar
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if(window.scrollY > 100) {
-                navbar.classList.add('shadow-xl', 'bg-white');
-                navbar.classList.remove('bg-white/90');
-            } else {
-                navbar.classList.remove('shadow-xl', 'bg-white');
-                navbar.classList.add('bg-white/90');
-            }
-        });
-
-        // Tooltips
-        const tooltips = document.querySelectorAll('.tooltip');
-        tooltips.forEach(tooltip => {
-            const tooltipText = document.createElement('div');
-            tooltipText.className = 'tooltip-text absolute bottom-full mb-2 hidden bg-gray-900 text-white px-3 py-1 rounded text-sm';
-            tooltipText.textContent = tooltip.dataset.tooltip;
-            tooltip.appendChild(tooltipText);
+<!-- Footer -->
+<footer class="bg-amber-900 text-white pt-16 pb-8">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- About -->
+            <div>
+                <h3 class="text-xl font-bold mb-6">Paramount Luxe</h3>
+                <p class="text-gray-300 mb-4">Redefining luxury living through exceptional design and unparalleled service across Indonesia's most exclusive locations.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
             
-            tooltip.addEventListener('mouseenter', () => {
-                tooltipText.classList.remove('hidden');
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="#hero" class="text-gray-300 hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#properties" class="text-gray-300 hover:text-white transition-colors">Properties</a></li>
+                    <li><a href="#amenities" class="text-gray-300 hover:text-white transition-colors">Amenities</a></li>
+                    <li><a href="#vr" class="text-gray-300 hover:text-white transition-colors">VR Experience</a></li>
+                    <li><a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Locations -->
+            <div>
+                <h3 class="text-xl font-bold mb-6">Our Locations</h3>
+                <ul class="space-y-3">
+                    <li class="text-gray-300">Gading Serpong, Tangerang</li>
+                    <li class="text-gray-300">SCBD, Jakarta</li>
+                    <li class="text-gray-300">Uluwatu, Bali</li>
+                    <li class="text-gray-300">Ciputra World, Surabaya</li>
+                    <li class="text-gray-300">Pondok Indah, Jakarta</li>
+                </ul>
+            </div>
+            
+            <!-- Newsletter -->
+            <div>
+                <h3 class="text-xl font-bold mb-6">Newsletter</h3>
+                <p class="text-gray-300 mb-4">Subscribe to receive updates on new properties and exclusive offers.</p>
+                <form class="flex">
+                    <input type="email" placeholder="Your Email" 
+                           class="flex-1 p-3 bg-white/10 border border-white/20 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-white placeholder-white/70">
+                    <button class="bg-primary text-white px-4 rounded-r-lg hover:bg-primaryDark transition-colors">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="border-t border-white/20 pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 text-sm mb-4 md:mb-0">&copy; 2025 Paramount Luxe. All Rights Reserved</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-300 hover:text-white text-sm transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+// Initialize AOS with optimized settings
+AOS.init({
+    duration: 300,
+    once: true,
+    easing: 'ease-in-out'
+});
+
+// Initialize Testimonial Swiper with faster autoplay
+const testimonialSwiper = new Swiper('.testimonialSwiper', {
+    loop: true,
+    autoplay: {
+        delay: 3000, // Lebih cepat (3 detik)
+        disableOnInteraction: false
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+    },
+    breakpoints: {
+        640: { slidesPerView: 1, spaceBetween: 20 },
+        768: { slidesPerView: 1, spaceBetween: 30 },
+        1024: { slidesPerView: 1, spaceBetween: 40 }
+    }
+});
+
+// Theme Toggle Logic
+const themeToggle = document.getElementById('themeToggle');
+const htmlElement = document.documentElement;
+
+// Update Theme Icon Function
+const updateThemeIcon = (isDark) => {
+    const icon = themeToggle.querySelector('i');
+    icon.classList.toggle('fa-moon', !isDark);
+    icon.classList.toggle('fa-sun', isDark);
+};
+
+// Check saved theme or system preference
+const savedTheme = localStorage.getItem('theme');
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+    htmlElement.classList.add('dark');
+    updateThemeIcon(true);
+} else {
+    htmlElement.classList.remove('dark');
+    updateThemeIcon(false);
+}
+
+// Monitor OS theme changes dynamically
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
+    const isDark = event.matches;
+    htmlElement.classList.toggle('dark', isDark);
+    updateThemeIcon(isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// Theme Toggle Click Event
+themeToggle.addEventListener('click', () => {
+    const isDark = htmlElement.classList.toggle('dark');
+    updateThemeIcon(isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// Optimized Preloader
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    preloader.style.transition = 'opacity 0.3s ease-out';
+    preloader.style.opacity = '0';
+    setTimeout(() => {
+        preloader.style.display = 'none';
+    }, 300);
+});
+
+// Mobile Menu Toggle
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileMenuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+    });
+});
+
+// Dynamic Navbar with smooth shadow effect
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    navbar.style.opacity = window.scrollY > 50 ? '0.95' : '1';
+    navbar.classList.toggle('shadow-lg', window.scrollY > 50);
+});
+
+// Smooth Scrolling for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const navbarHeight = document.getElementById('navbar').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
-            tooltip.addEventListener('mouseleave', () => {
-                tooltipText.classList.add('hidden');
-            });
-        });
-    </script>
-</body>
-</html>
+        }
+    });
+});
+
+// Tooltip Optimization
+document.querySelectorAll('.tooltip').forEach(tooltip => {
+    const tooltipText = document.createElement('div');
+    tooltipText.className = 'tooltip-text absolute bottom-full mb-2 hidden bg-gray-900 text-white px-3 py-1 rounded text-sm whitespace-nowrap';
+    tooltipText.textContent = tooltip.dataset.tooltip;
+    tooltip.appendChild(tooltipText);
+    
+    tooltip.addEventListener('mouseenter', () => tooltipText.classList.remove('hidden'));
+    tooltip.addEventListener('mouseleave', () => tooltipText.classList.add('hidden'));
+});
+</script>
